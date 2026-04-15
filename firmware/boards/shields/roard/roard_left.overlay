@@ -1,0 +1,30 @@
+#include "roard.dtsi"
+
+&kscan {
+    row-gpios =
+          <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* row0: P0.22 */
+        , <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* row1: P0.24 */
+        , <&gpio1 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* row2: P1.00 */
+        , <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* row3: P0.11 */
+        , <&gpio1 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* row4: P1.04 */
+        ;
+
+    col-gpios =
+          <&gpio0 10 GPIO_ACTIVE_HIGH> /* col0: P0.10 */
+        , <&gpio1 11 GPIO_ACTIVE_HIGH> /* col1: P1.11 */
+        , <&gpio1 13 GPIO_ACTIVE_HIGH> /* col2: P1.13 */
+        , <&gpio1 15 GPIO_ACTIVE_HIGH> /* col3: P1.15 */
+        , <&gpio0 2  GPIO_ACTIVE_HIGH> /* col4: P0.02 */
+        , <&gpio0 29 GPIO_ACTIVE_HIGH> /* col5: P0.29 */
+        , <&gpio0 31 GPIO_ACTIVE_HIGH> /* col6: P0.31 */
+        ;
+};
+
+/ {
+    esb_split {
+        compatible = "zmk,esb-split";
+        base-addr-0 = <0xE7 0xF1 0xB3 0x4C>;
+        base-addr-1 = <0xC2 0x3D 0xA7 0x7B>;
+        addr-prefix = <0xE7 0xC2 0x3C 0xC4 0x5D 0xA9 0xF5 0xC8>;
+    };
+};
